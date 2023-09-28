@@ -30,6 +30,8 @@ $H_A$ There is a difference in how effective the drug works
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
 
+The response variable is categorical. The response variable is the infected which is based on the treatment of the new aid drug. The explanatory variable is treatment which is categorical. Therefore we use cat~cat.
+
 # Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
@@ -40,9 +42,22 @@ $H_A$ There is a difference in how effective the drug works
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+barchartGC(~infected + treatment,data=druggies)
+barchartGC(~infected + treatment,data=druggies, type="percent")
+```
+
+This bar graph shows people who has aids and took the drug did better than the people who didn't take the drug. The people who don't have aids who took the drug stayed fairly the same to those who didn't take the drug.
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=druggies)
+rowPerc(table1)
+colPerc(table1)
+```
 
 ## Inferential Results
 
